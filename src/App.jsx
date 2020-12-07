@@ -1,9 +1,29 @@
-import './App.css';
-import database from './fire'
-import {GoogleMap, useLoadScript, Marker, InfoWindow} from "@react-google-maps/api"
+import "./App.css";
+import database from "./fire";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
+
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: "100vw",
+  height: "50vh",
+};
+const centerMap = {
+  lat: 35.6804,
+  lng: 139.769,
+};
 
 function App() {
-
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
 
   // function writeNewSpot( name, rating, typeArr) {
   //  database.ref('spots/').set({
@@ -21,14 +41,14 @@ function App() {
   //   console.log(data)
 
   // })
- 
 
   return (
-
     <div className="App ">
-       <h1>
-         Japan Skate Tracker
-       </h1>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={8}
+        center={centerMap}
+      ></GoogleMap>
     </div>
   );
 }
