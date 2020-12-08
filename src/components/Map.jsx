@@ -1,4 +1,4 @@
-import database from "../fire";
+import fire from "../fire";
 import {
   GoogleMap,
   useLoadScript,
@@ -33,20 +33,23 @@ export default function Map({ filterResults }) {
   const [spotInfo, setSpotInfo] = useState(null);
 
   useEffect(() => {
-    database.ref("spots").on("value", snapshot => {
-      if (snapshot && snapshot.exists()) {
-        let data = [];
-        const obj = snapshot.val();
-        for (let spots in obj) {
-          data.push(obj[spots]);
+    fire
+      .database()
+      .ref("spots")
+      .on("value", snapshot => {
+        if (snapshot && snapshot.exists()) {
+          let data = [];
+          const obj = snapshot.val();
+          for (let spots in obj) {
+            data.push(obj[spots]);
+          }
+          console.log(filterResults);
+          if (filterResults) {
+            data = data.filter(spots => spots.type.includes(filterResults));
+          }
+          data.length > 0 ? setData(data) : setData(null);
         }
-        console.log(filterResults);
-        if (filterResults) {
-          data = data.filter(spots => spots.type.includes(filterResults));
-        }
-        data.length > 0 ? setData(data) : setData(null);
-      }
-    });
+      });
   }, [filterResults]);
 
   //Helper Functions
@@ -65,7 +68,7 @@ export default function Map({ filterResults }) {
     <div className="Map">
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={9}
+        zoom={12}
         center={centerMap}
         options={options}
       >
@@ -88,7 +91,7 @@ export default function Map({ filterResults }) {
                 {spotInfo.type.length >= 0
                   ? ((<h2 className="text-md">Type</h2>),
                     spotInfo.type.map(type => (
-                      <span className="text-white rounded-full py-1 px-3 bg-purple-300 ">
+                      <span className=" rounded-full py-1 px-3 bg-white">
                         {" "}
                         {type}{" "}
                       </span>
@@ -106,11 +109,26 @@ export default function Map({ filterResults }) {
               <button
                 className="text-white rounded-full py-1 px-3 bg-blue-300"
                 onClick={() => {
-                  const url = `https://www.google.com/maps/@${spotInfo.coords[0]},${spotInfo.coords[1]}`;
+                  const url = `https://www.google.com/maps/@saddr=${spotInfo.coords[0]},${spotInfo.coords[1]}`;
+                  //maps.google.com/maps?saddr=START_ADD&amp;daddr=DEST_ADD&amp;ll=START_ADD
                   window.open(url, "_blank");
                 }}
               >
-                Get Directions
+                Get Directions{" "}
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="inline w-4"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
               </button>
             </div>
           </InfoWindow>

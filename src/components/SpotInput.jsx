@@ -1,13 +1,15 @@
 import { React, useState } from "react";
-import database from "../fire";
+import fire from "../fire";
+import "firebase/storage";
 
-const SpotInput = ({ lat, lng }) => {
+const SpotInput = ({ lat, lng, showInput }) => {
   const [spotInfo, setSpotInfo] = useState({
     name: "",
     coords: [lat, lng],
     rating: 5,
     type: [],
     bustRating: "0",
+    img: "",
   });
   const [typeInfo, setTypeInfo] = useState({
     flat: false,
@@ -18,6 +20,7 @@ const SpotInput = ({ lat, lng }) => {
     stairs: false,
     skatepark: false,
   });
+  const [uploadStatus, setUploadStatus] = useState();
 
   const handleInputChange = e => {
     const value =
@@ -48,8 +51,33 @@ const SpotInput = ({ lat, lng }) => {
     }));
   };
 
+  const handleUploadChange = e => {
+    const file = e.target.files[0];
+    const storageRef = fire.storage().ref("spot_images/" + file.name);
+    const task = storageRef.put(file);
+    task.on(
+      "state_changed",
+      function progress(snapshot) {
+        const percentage =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setUploadStatus(percentage);
+      },
+      function error(err) {
+        console.log(err);
+      },
+      function complete() {
+        setSpotInfo(prevState => ({
+          ...prevState,
+          img: file.name,
+        }));
+      },
+      console.log(spotInfo)
+    );
+  };
+
   const submitNewSpot = () => {
-    database.ref("spots/").push(spotInfo);
+    fire.database().ref("spots/").push(spotInfo);
+    showInput();
   };
 
   return (
@@ -70,47 +98,45 @@ const SpotInput = ({ lat, lng }) => {
             />
           </label>
           <label className="my-3">
-            ⭐️ Rating:
+            ⭐️ Rating: 1
             <input
               type="radio"
               name="rating"
               value={1}
               onChange={handleInputChange}
             />{" "}
-            1
+            2
             <input
               type="radio"
               name="rating"
               value={2}
               onChange={handleInputChange}
             />{" "}
-            2
+            3
             <input
               type="radio"
               name="rating"
               value={3}
               onChange={handleInputChange}
             />{" "}
-            3
+            4
             <input
               type="radio"
               name="rating"
               value={4}
               onChange={handleInputChange}
             />{" "}
-            4
+            5
             <input
               type="radio"
               name="rating"
               value={5}
               onChange={handleInputChange}
             />{" "}
-            5
           </label>
 
-          <label className="my-3">
-            Type:
-            <label>
+          <div className="flex flex-row mx-auto flex-wrap max-w-sm">
+            <label className="mx-3">
               Skatepark:
               <input
                 name="skatepark"
@@ -120,7 +146,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Flat:
               <input
@@ -131,7 +157,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Ledge:
               <input
@@ -141,7 +167,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Rail:
               <input
@@ -151,7 +177,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Manual:
               <input
@@ -161,7 +187,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Curb:
               <input
@@ -171,7 +197,7 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
               Stairs:
               <input
@@ -181,46 +207,68 @@ const SpotInput = ({ lat, lng }) => {
                 onChange={handleTypeInputChange}
               />
             </label>
-          </label>
+          </div>
+
           <label className="my-3">
-            👮🏻‍♂️ Bust Rating:
+            👮🏻‍♂️ Bust Rating: 1
             <input
               type="radio"
               name="bustRating"
               value={1}
               onChange={handleInputChange}
             />{" "}
-            1
+            2
             <input
               type="radio"
               name="bustRating"
               value={2}
               onChange={handleInputChange}
             />{" "}
-            2
+            3
             <input
               type="radio"
               name="bustRating"
               value={3}
               onChange={handleInputChange}
             />{" "}
-            3
+            4
             <input
               type="radio"
               name="bustRating"
               value={4}
               onChange={handleInputChange}
             />{" "}
-            4
+            5
             <input
               type="radio"
               name="bustRating"
               value={5}
               onChange={handleInputChange}
             />{" "}
-            5
           </label>
         </form>
+
+        {/* <label className="block mt-2 mb-5">
+         
+          <input
+            type="file"
+            name=""
+            id=""
+            size="20"
+            onChange={handleUploadChange}
+          />
+        </label> */}
+        <input
+          type="file"
+          name="uploadfile"
+          id="img"
+          style={{ display: "none" }}
+          onChange={handleUploadChange}
+        />
+        <label htmlFor="img" className="block cursor-pointer border-b-2 w-md">
+          {" "}
+          {uploadStatus ? uploadStatus.toFixed() + `%` : "Upload Image"}
+        </label>
 
         <button
           className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
