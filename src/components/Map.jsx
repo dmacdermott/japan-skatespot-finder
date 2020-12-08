@@ -18,6 +18,7 @@ const centerMap = {
   lat: 35.6804,
   lng: 139.769,
 };
+
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
@@ -73,7 +74,15 @@ export default function Map() {
             position={{ lat: +spotInfo.coords[0], lng: +spotInfo.coords[1] }}
             onCloseClick={() => setSpotInfo(null)}
           >
-            <div>{spotInfo.name}</div>
+            <div className="">
+              <h3>{spotInfo.name}</h3>
+              <div>
+                {spotInfo.type
+                  ? ((<h2>Type</h2>),
+                    spotInfo.type.map(type => <span> {type} </span>))
+                  : null}
+              </div>
+            </div>
           </InfoWindow>
         )}
       </GoogleMap>

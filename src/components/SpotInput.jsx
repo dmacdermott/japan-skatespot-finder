@@ -1,10 +1,10 @@
 import { React, useState } from "react";
 import database from "../fire";
 
-const SpotInput = () => {
+const SpotInput = ({ lat, lng }) => {
   const [spotInfo, setSpotInfo] = useState({
     name: "",
-    coords: [0, 0],
+    coords: [lat, lng],
     rating: 5,
     type: [],
     bustRating: "0",
@@ -47,21 +47,9 @@ const SpotInput = () => {
     }));
   };
 
-  const submitNewSpot = async () => {
-    let lat;
-    let lng;
-
-    //Get user location
-    navigator.geolocation.getCurrentPosition(async position => {
-      lat = await position.coords.latitude;
-      lng = await position.coords.longitude;
-      setSpotInfo(prevState => ({
-        ...prevState,
-        coords: [lat, lng],
-      }));
-      setTimeout(() => database.ref("spots/").push(spotInfo), 4000);
-      //Submit to database
-    });
+  const submitNewSpot = () => {
+    database.ref("spots/").push(spotInfo);
+    console.log(spotInfo);
   };
 
   return (

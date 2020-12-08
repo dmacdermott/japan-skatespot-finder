@@ -3,8 +3,13 @@ import Map from "./components/Map";
 import AddSpot from "./components/AddSpot";
 import SpotInput from "./components/SpotInput";
 import { useState } from "react";
+import { usePosition } from "use-position";
 
 function App() {
+  //Get User Locations
+  const watch = true;
+  const { latitude, longitude } = usePosition(watch);
+  console.log(latitude);
   const [showSpotInput, setShowInput] = useState(false);
 
   //Helper Functions
@@ -16,7 +21,7 @@ function App() {
     <div className="App relative">
       <Map />
       <AddSpot showInput={showInput} showSpotInput={showSpotInput}></AddSpot>
-      {showSpotInput && <SpotInput />}
+      {showSpotInput && <SpotInput lat={latitude} lng={longitude} />}
     </div>
   );
 }
