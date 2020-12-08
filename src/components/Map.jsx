@@ -31,7 +31,12 @@ export default function Map() {
   useEffect(() => {
     database.ref("spots").on("value", snapshot => {
       if (snapshot && snapshot.exists()) {
-        setData(snapshot.val());
+        const data = [];
+        const obj = snapshot.val();
+        for (let spots in obj) {
+          data.push(obj[spots]);
+        }
+        setData(data);
       }
     });
   }, []);
@@ -47,7 +52,7 @@ export default function Map() {
   });
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-
+  console.log(data);
   return (
     <div className="Map">
       <GoogleMap
@@ -59,7 +64,6 @@ export default function Map() {
         {data &&
           data.map(spot => (
             <Marker
-              key={spot.id}
               position={{ lat: +spot.coords[0], lng: +spot.coords[1] }}
               onClick={() => getSpotInfo(spot)}
             />
