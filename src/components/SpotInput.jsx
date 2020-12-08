@@ -16,6 +16,7 @@ const SpotInput = ({ lat, lng }) => {
     manual: false,
     curb: false,
     stairs: false,
+    skatepark: false,
   });
 
   const handleInputChange = e => {
@@ -49,13 +50,14 @@ const SpotInput = ({ lat, lng }) => {
 
   const submitNewSpot = () => {
     database.ref("spots/").push(spotInfo);
-    console.log(spotInfo);
   };
 
   return (
     <div className="bottom-wrapper absolute flex bottom-0 w-full text-center">
       <div className="shadow-lg block rounded-lg m-5 pl-5 pr-5 bg-white mx-auto">
-        <h3>Add Spot</h3>
+        <h3 className="text-xl font-bold leading-7 text-navy-800 sm:text-lg sm:truncate mt-2">
+          Add Spot
+        </h3>
         <form action="" className=" flex flex-col">
           <label className="my-3">
             Name:
@@ -64,10 +66,11 @@ const SpotInput = ({ lat, lng }) => {
               name="name"
               value={spotInfo.name}
               onChange={handleInputChange}
+              className="border-b-2 border-purple-900 focus:outline-none"
             />
           </label>
           <label className="my-3">
-            Rating:
+            ⭐️ Rating:
             <input
               type="radio"
               name="rating"
@@ -106,8 +109,17 @@ const SpotInput = ({ lat, lng }) => {
           </label>
 
           <label className="my-3">
-            {" "}
-            Type
+            Type:
+            <label>
+              Skatepark
+              <input
+                name="skatepark"
+                value="skatepark"
+                type="checkbox"
+                checked={spotInfo.skatepark}
+                onChange={handleTypeInputChange}
+              />
+            </label>
             <label>
               {" "}
               Flat
@@ -210,7 +222,11 @@ const SpotInput = ({ lat, lng }) => {
           </label>
         </form>
 
-        <button type="button" onClick={() => submitNewSpot()}>
+        <button
+          className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
+          type="button"
+          onClick={() => submitNewSpot()}
+        >
           Submit New Spot
         </button>
       </div>

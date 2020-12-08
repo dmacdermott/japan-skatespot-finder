@@ -25,6 +25,9 @@ const options = {
   gestureHandling: "greedy",
 };
 
+const police = "👮🏻‍♂️";
+const star = "⭐️";
+
 export default function Map() {
   const [data, setData] = useState();
   const [spotInfo, setSpotInfo] = useState(null);
@@ -53,7 +56,7 @@ export default function Map() {
   });
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-  console.log(data);
+  console.log("Loaded Data ", data);
   return (
     <div className="Map">
       <GoogleMap
@@ -74,14 +77,36 @@ export default function Map() {
             position={{ lat: +spotInfo.coords[0], lng: +spotInfo.coords[1] }}
             onCloseClick={() => setSpotInfo(null)}
           >
-            <div className="">
-              <h3>{spotInfo.name}</h3>
-              <div>
-                {spotInfo.type
-                  ? ((<h2>Type</h2>),
-                    spotInfo.type.map(type => <span> {type} </span>))
+            <div className="m-3">
+              <h3 className="text-lg font-bold">{spotInfo.name}</h3>
+              <div className="my-2">
+                {spotInfo.type.length >= 0
+                  ? ((<h2 className="text-md">Type</h2>),
+                    spotInfo.type.map(type => (
+                      <span className="text-white rounded-full py-1 px-3 bg-purple-300 ">
+                        {" "}
+                        {type}{" "}
+                      </span>
+                    )))
                   : null}
               </div>
+              <p className="my-2">
+                Rating:
+                {star.repeat(spotInfo.rating)}
+              </p>
+              <p className="my-2">
+                Bust Rating:
+                {police.repeat(spotInfo.bustRating)}
+              </p>
+              <button
+                className="text-white rounded-full py-1 px-3 bg-blue-300"
+                onClick={() => {
+                  const url = `https://www.google.com/maps/@${spotInfo.coords[0]},${spotInfo.coords[1]}`;
+                  window.open(url, "_blank");
+                }}
+              >
+                Get Directions
+              </button>
             </div>
           </InfoWindow>
         )}
