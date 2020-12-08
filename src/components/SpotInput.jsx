@@ -111,7 +111,7 @@ const SpotInput = ({ lat, lng }) => {
           <label className="my-3">
             Type:
             <label>
-              Skatepark
+              Skatepark:
               <input
                 name="skatepark"
                 value="skatepark"
@@ -122,7 +122,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Flat
+              Flat:
               <input
                 name="flat"
                 value="flat"
@@ -133,7 +133,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Ledge
+              Ledge:
               <input
                 name="ledge"
                 type="checkbox"
@@ -143,7 +143,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Rail
+              Rail:
               <input
                 name="rail"
                 type="checkbox"
@@ -153,7 +153,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Manual
+              Manual:
               <input
                 name="manual"
                 type="checkbox"
@@ -163,7 +163,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Curb
+              Curb:
               <input
                 name="curb"
                 type="checkbox"
@@ -173,7 +173,7 @@ const SpotInput = ({ lat, lng }) => {
             </label>
             <label>
               {" "}
-              Stairs
+              Stairs:
               <input
                 name="stairs"
                 type="checkbox"

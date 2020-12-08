@@ -37,8 +37,12 @@ function App() {
         getFilter={getFilter}
         showFilter={showFilter}
       ></AddFilterBtn>
-      {showSpotInput && <SpotInput lat={latitude} lng={longitude} />}
-      {showFilter && <Filter getFilterResults={getFilterResults} />}
+      {showSpotInput && !showFilter && (
+        <SpotInput lat={latitude} lng={longitude} />
+      )}
+      {showFilter && !showSpotInput && (
+        <Filter getFilterResults={getFilterResults} />
+      )}
     </div>
   );
 }
