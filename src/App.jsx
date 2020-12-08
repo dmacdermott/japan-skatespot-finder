@@ -13,19 +13,23 @@ function App() {
   console.log(latitude);
   const [showSpotInput, setShowInput] = useState(false);
   const [showFilter, setFilter] = useState(false);
+  const [filterResults, setFilterResults] = useState(null);
 
   //Helper Functions
   function showInput() {
     return setShowInput(!showSpotInput);
   }
-
   function getFilter() {
     return setFilter(!showFilter);
   }
 
+  function getFilterResults(type) {
+    return setFilterResults(type);
+  }
+
   return (
     <div className="App relative">
-      <Map />
+      <Map filterResults={filterResults} />
 
       <AddFilterBtn
         showInput={showInput}
@@ -34,7 +38,7 @@ function App() {
         showFilter={showFilter}
       ></AddFilterBtn>
       {showSpotInput && <SpotInput lat={latitude} lng={longitude} />}
-      {showFilter && <Filter />}
+      {showFilter && <Filter getFilterResults={getFilterResults} />}
     </div>
   );
 }

@@ -28,22 +28,26 @@ const options = {
 const police = "👮🏻‍♂️";
 const star = "⭐️";
 
-export default function Map() {
+export default function Map({ filterResults }) {
   const [data, setData] = useState();
   const [spotInfo, setSpotInfo] = useState(null);
 
   useEffect(() => {
     database.ref("spots").on("value", snapshot => {
       if (snapshot && snapshot.exists()) {
-        const data = [];
+        let data = [];
         const obj = snapshot.val();
         for (let spots in obj) {
           data.push(obj[spots]);
         }
-        setData(data);
+        console.log(filterResults);
+        if (filterResults) {
+          data = data.filter(spots => spots.type.includes(filterResults));
+        }
+        data.length > 0 ? setData(data) : setData(null);
       }
     });
-  }, []);
+  }, [filterResults]);
 
   //Helper Functions
   function getSpotInfo(spot) {
@@ -66,6 +70,7 @@ export default function Map() {
         options={options}
       >
         {data &&
+          data.length > 0 &&
           data.map(spot => (
             <Marker
               position={{ lat: +spot.coords[0], lng: +spot.coords[1] }}

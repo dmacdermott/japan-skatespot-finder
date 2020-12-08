@@ -1,66 +1,89 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 
-const Filter = () => {
+const Filter = ({ getFilterResults }) => {
   const [filterType, setFilterType] = useState();
 
   const handleInputChange = e => {
     const value = e.target.value;
     setFilterType(value);
-    console.log(filterType);
   };
 
   return (
-    <div className="bottom-wrapper absolute flex bottom-0 w-full text-center">
-      <div className="shadow-lg block rounded-lg m-5 pl-5 pr-5 bg-white mx-auto">
+    <div className="bottom-wrapper absolute flex bottom-0 w-full text-center ">
+      <div className="shadow-lg block rounded-lg m-5 pl-5 pr-5 bg-white mx-auto max-w-md">
         <h3 className="text-xl font-bold leading-7 text-navy-800 sm:text-lg sm:truncate mt-2">
           Filter Spots
         </h3>
         <form action="" className=" flex flex-col">
           <label className="my-3">
-            Type:
-            <label>
-              Skateparks
+            <label className="mx-3">
+              Skateparks:
               <input
-                name="skatepark"
+                name="spot-types"
                 value="skatepark"
                 type="radio"
                 onChange={handleInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Flat Ground
+              Flat Ground:
               <input
-                name="flat"
+                name="spot-types"
                 value="flat"
                 type="radio"
                 onChange={handleInputChange}
               />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Ledges
-              <input name="ledge" type="radio" onChange={handleInputChange} />
+              Ledges:
+              <input
+                name="spot-types"
+                value="ledge"
+                type="radio"
+                onChange={handleInputChange}
+              />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Rails
-              <input name="rail" type="radio" onChange={handleInputChange} />
+              Rails:
+              <input
+                name="spot-types"
+                type="radio"
+                value="rail"
+                onChange={handleInputChange}
+              />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Manual Spots
-              <input name="manual" type="radio" onChange={handleInputChange} />
+              Manual Spots:
+              <input
+                name="spot-types"
+                type="radio"
+                value="manual"
+                onChange={handleInputChange}
+              />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Curbs
-              <input name="curb" type="radio" onChange={handleInputChange} />
+              Curbs:
+              <input
+                name="spot-types"
+                type="radio"
+                value="curb"
+                onChange={handleInputChange}
+              />
             </label>
-            <label>
+            <label className="mx-3">
               {" "}
-              Stairs
-              <input name="stairs" type="radio" onChange={handleInputChange} />
+              Stairs:
+              <input
+                name="spot-types"
+                type="radio"
+                value="stairs"
+                onChange={handleInputChange}
+              />
             </label>
           </label>
         </form>
@@ -68,7 +91,7 @@ const Filter = () => {
         <button
           className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
           type="button"
-          onClick={() => filterSpots()}
+          onClick={() => getFilterResults(filterType)}
         >
           Filter Spots
         </button>
