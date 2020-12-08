@@ -1,12 +1,14 @@
 import "./App.css";
 import Map from "./components/Map";
 import AddSpot from "./components/AddSpot";
+import SpotInput from "./components/SpotInput";
 
 function App() {
   return (
     <div className="App relative">
       <Map />
       <AddSpot></AddSpot>
+      <SpotInput />
     </div>
   );
 }

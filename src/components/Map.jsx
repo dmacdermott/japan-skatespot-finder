@@ -21,6 +21,7 @@ const centerMap = {
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
+  gestureHandling: "greedy",
 };
 
 export default function Map() {
@@ -34,6 +35,11 @@ export default function Map() {
       }
     });
   }, []);
+
+  //Helper Functions
+  function getSpotInfo(spot) {
+    return setSpotInfo(spot);
+  }
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -55,9 +61,7 @@ export default function Map() {
             <Marker
               key={spot.id}
               position={{ lat: +spot.coords[0], lng: +spot.coords[1] }}
-              onClick={() => {
-                setSpotInfo(spot);
-              }}
+              onClick={() => getSpotInfo(spot)}
             />
           ))}
         {spotInfo && (
