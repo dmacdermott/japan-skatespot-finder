@@ -65,165 +65,167 @@ const SpotInput = () => {
   };
 
   return (
-    <div className="shadow-lg rounded-lg absolute bottom-0 m-5 pl-5 pr-5  flex flex-col bg-white">
-      <h3>Add Spot</h3>
-      <form action="" className=" flex flex-col">
-        <label className="my-3">
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={spotInfo.name}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label className="my-3">
-          Rating:
-          <input
-            type="radio"
-            name="rating"
-            value={1}
-            onChange={handleInputChange}
-          />{" "}
-          1
-          <input
-            type="radio"
-            name="rating"
-            value={2}
-            onChange={handleInputChange}
-          />{" "}
-          2
-          <input
-            type="radio"
-            name="rating"
-            value={3}
-            onChange={handleInputChange}
-          />{" "}
-          3
-          <input
-            type="radio"
-            name="rating"
-            value={4}
-            onChange={handleInputChange}
-          />{" "}
-          4
-          <input
-            type="radio"
-            name="rating"
-            value={5}
-            onChange={handleInputChange}
-          />{" "}
-          5
-        </label>
+    <div className="bottom-wrapper absolute flex bottom-0 w-full text-center">
+      <div className="shadow-lg block rounded-lg m-5 pl-5 pr-5 bg-white mx-auto">
+        <h3>Add Spot</h3>
+        <form action="" className=" flex flex-col">
+          <label className="my-3">
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={spotInfo.name}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label className="my-3">
+            Rating:
+            <input
+              type="radio"
+              name="rating"
+              value={1}
+              onChange={handleInputChange}
+            />{" "}
+            1
+            <input
+              type="radio"
+              name="rating"
+              value={2}
+              onChange={handleInputChange}
+            />{" "}
+            2
+            <input
+              type="radio"
+              name="rating"
+              value={3}
+              onChange={handleInputChange}
+            />{" "}
+            3
+            <input
+              type="radio"
+              name="rating"
+              value={4}
+              onChange={handleInputChange}
+            />{" "}
+            4
+            <input
+              type="radio"
+              name="rating"
+              value={5}
+              onChange={handleInputChange}
+            />{" "}
+            5
+          </label>
 
-        <label className="my-3">
-          {" "}
-          Type
-          <label>
+          <label className="my-3">
             {" "}
-            Flat
-            <input
-              name="flat"
-              value="flat"
-              type="checkbox"
-              checked={spotInfo.flat}
-              onChange={handleTypeInputChange}
-            />
+            Type
+            <label>
+              {" "}
+              Flat
+              <input
+                name="flat"
+                value="flat"
+                type="checkbox"
+                checked={spotInfo.flat}
+                onChange={handleTypeInputChange}
+              />
+            </label>
+            <label>
+              {" "}
+              Ledge
+              <input
+                name="ledge"
+                type="checkbox"
+                checked={spotInfo.ledge}
+                onChange={handleTypeInputChange}
+              />
+            </label>
+            <label>
+              {" "}
+              Rail
+              <input
+                name="rail"
+                type="checkbox"
+                checked={spotInfo.rail}
+                onChange={handleTypeInputChange}
+              />
+            </label>
+            <label>
+              {" "}
+              Manual
+              <input
+                name="manual"
+                type="checkbox"
+                checked={spotInfo.manual}
+                onChange={handleTypeInputChange}
+              />
+            </label>
+            <label>
+              {" "}
+              Curb
+              <input
+                name="curb"
+                type="checkbox"
+                checked={spotInfo.curb}
+                onChange={handleTypeInputChange}
+              />
+            </label>
+            <label>
+              {" "}
+              Stairs
+              <input
+                name="stairs"
+                type="checkbox"
+                checked={spotInfo.stairs}
+                onChange={handleTypeInputChange}
+              />
+            </label>
           </label>
-          <label>
-            {" "}
-            Ledge
+          <label className="my-3">
+            👮🏻‍♂️ Bust Rating:
             <input
-              name="ledge"
-              type="checkbox"
-              checked={spotInfo.ledge}
-              onChange={handleTypeInputChange}
-            />
-          </label>
-          <label>
-            {" "}
-            Rail
+              type="radio"
+              name="bustRating"
+              value={1}
+              onChange={handleInputChange}
+            />{" "}
+            1
             <input
-              name="rail"
-              type="checkbox"
-              checked={spotInfo.rail}
-              onChange={handleTypeInputChange}
-            />
-          </label>
-          <label>
-            {" "}
-            Manual
+              type="radio"
+              name="bustRating"
+              value={2}
+              onChange={handleInputChange}
+            />{" "}
+            2
             <input
-              name="manual"
-              type="checkbox"
-              checked={spotInfo.manual}
-              onChange={handleTypeInputChange}
-            />
-          </label>
-          <label>
-            {" "}
-            Curb
+              type="radio"
+              name="bustRating"
+              value={3}
+              onChange={handleInputChange}
+            />{" "}
+            3
             <input
-              name="curb"
-              type="checkbox"
-              checked={spotInfo.curb}
-              onChange={handleTypeInputChange}
-            />
-          </label>
-          <label>
-            {" "}
-            Stairs
+              type="radio"
+              name="bustRating"
+              value={4}
+              onChange={handleInputChange}
+            />{" "}
+            4
             <input
-              name="stairs"
-              type="checkbox"
-              checked={spotInfo.stairs}
-              onChange={handleTypeInputChange}
-            />
+              type="radio"
+              name="bustRating"
+              value={5}
+              onChange={handleInputChange}
+            />{" "}
+            5
           </label>
-        </label>
-        <label className="my-3">
-          👮🏻‍♂️ Bust Rating:
-          <input
-            type="radio"
-            name="bustRating"
-            value={1}
-            onChange={handleInputChange}
-          />{" "}
-          1
-          <input
-            type="radio"
-            name="bustRating"
-            value={2}
-            onChange={handleInputChange}
-          />{" "}
-          2
-          <input
-            type="radio"
-            name="bustRating"
-            value={3}
-            onChange={handleInputChange}
-          />{" "}
-          3
-          <input
-            type="radio"
-            name="bustRating"
-            value={4}
-            onChange={handleInputChange}
-          />{" "}
-          4
-          <input
-            type="radio"
-            name="bustRating"
-            value={5}
-            onChange={handleInputChange}
-          />{" "}
-          5
-        </label>
-      </form>
+        </form>
 
-      <button type="button" onClick={() => submitNewSpot()}>
-        Submit New Spot
-      </button>
+        <button type="button" onClick={() => submitNewSpot()}>
+          Submit New Spot
+        </button>
+      </div>
     </div>
   );
 };

@@ -7,9 +7,10 @@ const AddSpot = ({ showInput, showSpotInput }) => {
       onClick={() => {
         showInput();
       }}
-      className="absolute bottom-4 right-4 bg-green-500 rounded-full h-12 w-12 text-white shadow-lg focus:outline-none"
+      className="z-50 absolute bottom-4 right-4 bg-green-500 rounded-full h-12 w-12 text-white shadow-lg focus:outline-none"
     >
       <svg
+        className={showSpotInput ? "transform rotate-45" : ""}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
