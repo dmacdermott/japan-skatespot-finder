@@ -248,16 +248,6 @@ const SpotInput = ({ lat, lng, showInput }) => {
           </label>
         </form>
 
-        {/* <label className="block mt-2 mb-5">
-         
-          <input
-            type="file"
-            name=""
-            id=""
-            size="20"
-            onChange={handleUploadChange}
-          />
-        </label> */}
         <input
           type="file"
           name="uploadfile"
@@ -271,6 +261,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
         </label>
 
         <button
+          disabled={uploadStatus && uploadStatus !== 100}
           className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
           type="button"
           onClick={() => submitNewSpot()}

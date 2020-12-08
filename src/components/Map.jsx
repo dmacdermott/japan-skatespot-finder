@@ -28,7 +28,7 @@ const options = {
 const police = "👮🏻‍♂️";
 const star = "⭐️";
 
-export default function Map({ filterResults }) {
+export default function Map({ filterResults, getDetailedInfo }) {
   const [data, setData] = useState();
   const [spotInfo, setSpotInfo] = useState(null);
 
@@ -45,7 +45,9 @@ export default function Map({ filterResults }) {
           }
           console.log(filterResults);
           if (filterResults) {
-            data = data.filter(spots => spots.type.includes(filterResults));
+            data = data.filter(
+              spots => spots.type && spots.type.includes(filterResults)
+            );
           }
           data.length > 0 ? setData(data) : setData(null);
         }
@@ -88,10 +90,10 @@ export default function Map({ filterResults }) {
             <div className="m-3">
               <h3 className="text-lg font-bold">{spotInfo.name}</h3>
               <div className="my-2">
-                {spotInfo.type.length >= 0
+                {typeof spotInfo.type === "object"
                   ? ((<h2 className="text-md">Type</h2>),
                     spotInfo.type.map(type => (
-                      <span className=" rounded-full py-1 px-3 bg-white">
+                      <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
                         {" "}
                         {type}{" "}
                       </span>
@@ -108,13 +110,9 @@ export default function Map({ filterResults }) {
               </p>
               <button
                 className="text-white rounded-full py-1 px-3 bg-blue-300"
-                onClick={() => {
-                  const url = `https://www.google.com/maps/@saddr=${spotInfo.coords[0]},${spotInfo.coords[1]}`;
-                  //maps.google.com/maps?saddr=START_ADD&amp;daddr=DEST_ADD&amp;ll=START_ADD
-                  window.open(url, "_blank");
-                }}
+                onClick={() => getDetailedInfo(spotInfo)}
               >
-                Get Directions{" "}
+                Show More Info
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -123,9 +121,9 @@ export default function Map({ filterResults }) {
                     className="inline w-4"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </span>

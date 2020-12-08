@@ -5,15 +5,17 @@ import SpotInput from "./components/SpotInput";
 import { useState } from "react";
 import { usePosition } from "use-position";
 import Filter from "./components/Filter";
+import MoreInfo from "./components/MoreInfo";
 
 function App() {
   //Get User Locations
   const watch = true;
   const { latitude, longitude } = usePosition(watch);
-  console.log(latitude);
   const [showSpotInput, setShowInput] = useState(false);
   const [showFilter, setFilter] = useState(false);
   const [filterResults, setFilterResults] = useState(null);
+  const [moreInfo, setMoreInfo] = useState();
+  const [detailedInfo, setDetailedInfo] = useState();
 
   //Helper Functions
   function showInput() {
@@ -27,9 +29,18 @@ function App() {
     return setFilterResults(type);
   }
 
+  function getDetailedInfo(spot) {
+    setDetailedInfo(spot);
+    setMoreInfo(!moreInfo);
+  }
+
+  function showMoreInfo() {
+    setMoreInfo(!moreInfo);
+  }
+
   return (
     <div className="App relative">
-      <Map filterResults={filterResults} />
+      <Map filterResults={filterResults} getDetailedInfo={getDetailedInfo} />
 
       <AddFilterBtn
         showInput={showInput}
@@ -42,6 +53,9 @@ function App() {
       )}
       {showFilter && !showSpotInput && (
         <Filter getFilterResults={getFilterResults} />
+      )}
+      {moreInfo && (
+        <MoreInfo detailedInfo={detailedInfo} showMoreInfo={showMoreInfo} />
       )}
     </div>
   );
