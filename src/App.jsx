@@ -2,13 +2,21 @@ import "./App.css";
 import Map from "./components/Map";
 import AddSpot from "./components/AddSpot";
 import SpotInput from "./components/SpotInput";
+import { useState } from "react";
 
 function App() {
+  const [showSpotInput, setShowInput] = useState(false);
+
+  //Helper Functions
+  function showInput() {
+    return setShowInput(!showSpotInput);
+  }
+
   return (
     <div className="App relative">
       <Map />
-      <AddSpot></AddSpot>
-      <SpotInput />
+      <AddSpot showInput={showInput} showSpotInput={showSpotInput}></AddSpot>
+      {showSpotInput && <SpotInput />}
     </div>
   );
 }

@@ -59,13 +59,14 @@ const SpotInput = () => {
         ...prevState,
         coords: [lat, lng],
       }));
-      setTimeout(() => database.ref("spots/").push(spotInfo));
+      setTimeout(() => database.ref("spots/").push(spotInfo), 4000);
       //Submit to database
     });
   };
 
   return (
-    <div className="mb-5 mt-5 flex flex-col">
+    <div className="shadow-lg rounded-lg absolute bottom-0 m-5 pl-5 pr-5  flex flex-col bg-white">
+      <h3>Add Spot</h3>
       <form action="" className=" flex flex-col">
         <label className="my-3">
           Name:

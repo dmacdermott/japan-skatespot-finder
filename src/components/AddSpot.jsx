@@ -1,12 +1,27 @@
 import React from "react";
 
-const AddSpot = () => {
+const AddSpot = ({ showInput, showSpotInput }) => {
   return (
     <button
       type="button"
-      className="fixed bottom-5  bg-green-500 rounded-full py-3 px-4 text-white shadow-lg focus:outline-none"
+      onClick={() => {
+        showInput();
+      }}
+      className="absolute bottom-4 right-4 bg-green-500 rounded-full h-12 w-12 text-white shadow-lg focus:outline-none"
     >
-      Add Spot
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+        />
+      </svg>
     </button>
   );
 };
