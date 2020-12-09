@@ -85,6 +85,16 @@ const Filter = ({ getFilterResults }) => {
                 onChange={handleInputChange}
               />
             </label>
+            <label className="mx-3">
+              {" "}
+              All:
+              <input
+                name="spot-types"
+                type="radio"
+                value=""
+                onChange={handleInputChange}
+              />
+            </label>
           </label>
         </form>
 
