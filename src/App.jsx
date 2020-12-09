@@ -40,7 +40,11 @@ function App() {
 
   return (
     <div className="App relative">
-      <Map filterResults={filterResults} getDetailedInfo={getDetailedInfo} />
+      <Map
+        filterResults={filterResults}
+        getDetailedInfo={getDetailedInfo}
+        className={"max-h-full"}
+      />
 
       <AddFilterBtn
         showInput={showInput}

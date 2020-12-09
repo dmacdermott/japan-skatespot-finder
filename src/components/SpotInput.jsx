@@ -82,7 +82,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
 
   return (
     <div className="bottom-wrapper absolute flex bottom-0 w-full text-center">
-      <div className="shadow-lg block rounded-lg m-5 pl-5 pr-5 bg-white mx-auto">
+      <div className="shadow-lg block rounded-lg  m-5 pl-5 pr-5 bg-white mx-auto">
         <h3 className="text-xl font-bold leading-7 text-navy-800 sm:text-lg sm:truncate mt-2">
           Add Spot
         </h3>

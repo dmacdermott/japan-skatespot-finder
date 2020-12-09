@@ -4,7 +4,7 @@ const AddFilterBtn = ({ showInput, showSpotInput, getFilter }) => {
   const [hideFilterBtn, setHideFilterBtn] = useState(false);
   const [hideAddBtn, setHideAddBtn] = useState(false);
   return (
-    <div className="z-50 absolute bottom-4 right-4 flex flex-col ">
+    <div className="z-50 absolute bottom-4 right-4 flex flex-col md:bottom-10 ">
       <button
         type="button"
         onClick={() => {

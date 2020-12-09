@@ -19,8 +19,8 @@ const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
     });
 
   return (
-    <div className="shadow-lg rounded-lg bg-white flex flex-col h-100 w-100 align-middle justify-center text-center absolute top-2/4 left-2/4 -translate-x-2/4">
-      <div className=" rounded-lg m-5 pl-5 pr-5">
+    <div className="shadow-lg rounded-lg bg-white flex flex-col absolute top-5 mx-20 w-3/4">
+      <div className="m-5 pl-5 pr-5">
         <h1 className="font-bold text-xl"> {detailedInfo.name}</h1>
         <div className="my-2">
           {typeof detailedInfo.type === "object"
@@ -41,11 +41,11 @@ const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
           Bust Rating:
           {police.repeat(detailedInfo.bustRating)}
         </p>
-        <img src="" alt="" id="image-el" />
+        <img src="" alt="" id="image-el" className={"max-h-72 block mx-auto"} />
       </div>
 
       <button
-        className="bg-purple-900 rounded-full h-12 w-12 text-white shadow-lg focus:outline-none mt-4"
+        className="bg-purple-700 hover:bg-purple-900 rounded-full h-12 w-12 text-white shadow-lg focus:outline-none mt-4 mx-auto mb-4"
         onClick={() => showMoreInfo()}
       >
         <svg

@@ -67,12 +67,13 @@ export default function Map({ filterResults, getDetailedInfo }) {
   if (!isLoaded) return "Loading Maps";
   console.log("Loaded Data ", data);
   return (
-    <div className="Map">
+    <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={12}
         center={centerMap}
         options={options}
+        className={"Map"}
       >
         {data &&
           data.length > 0 &&
