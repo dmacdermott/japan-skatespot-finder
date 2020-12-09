@@ -12,7 +12,10 @@ import { React, useState, useEffect } from "react";
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
-  height: "100vh",
+  position: "absolute",
+  height: "100%",
+  top: 0,
+  bottom: 0,
 };
 const centerMap = {
   lat: 35.6804,

@@ -44,11 +44,7 @@ function App() {
         Skate Spot Finder
       </h1>
 
-      <Map
-        filterResults={filterResults}
-        getDetailedInfo={getDetailedInfo}
-        className={"max-h-full"}
-      />
+      <Map filterResults={filterResults} getDetailedInfo={getDetailedInfo} />
 
       <AddFilterBtn
         showInput={showInput}
