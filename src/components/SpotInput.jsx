@@ -92,7 +92,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="name"
               value={spotInfo.name}
               onChange={handleInputChange}
-              className="border-b-2 border-purple-900 focus:outline-none"
+              className="border-b-2 border-purple-700 focus:outline-none"
             />
           </label>
           <label className="my-3">
@@ -280,7 +280,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
 
         <button
           disabled={uploadStatus && uploadStatus !== 100}
-          className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none my-3"
+          className="text-white font-bold rounded-full py-3 px-6 bg-purple-700 hover:bg-purple-900 focus:outline-none my-3"
           type="button"
           onClick={() => submitNewSpot()}
         >

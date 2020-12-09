@@ -89,7 +89,7 @@ const Filter = ({ getFilterResults }) => {
         </form>
 
         <button
-          className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
+          className="text-white font-bold rounded-full py-3 px-6 bg-purple-700 hover:bg-purple-900 focus:outline-none mb-3"
           type="button"
           onClick={() => getFilterResults(filterType)}
         >
