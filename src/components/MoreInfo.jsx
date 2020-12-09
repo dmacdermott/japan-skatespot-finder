@@ -9,8 +9,7 @@ const star = "⭐️";
 const police = "👮🏻‍♂️";
 
 const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
-  const imgRef = useRef();
-
+  //get photo
   const photo = storageRef.child(`spot_images/${detailedInfo.img}`);
   photo
     .getDownloadURL()

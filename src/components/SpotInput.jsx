@@ -104,6 +104,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="rating"
               value={1}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             2
             <input
@@ -111,6 +112,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="rating"
               value={2}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             3
             <input
@@ -118,6 +120,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="rating"
               value={3}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             4
             <input
@@ -125,6 +128,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="rating"
               value={4}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             5
             <input
@@ -132,6 +136,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="rating"
               value={5}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
           </label>
 
@@ -144,6 +149,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.skatepark}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -155,6 +161,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.flat}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -165,6 +172,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.ledge}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -175,6 +183,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.rail}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -185,6 +194,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.manual}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -195,6 +205,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.curb}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
             <label className="mx-3">
@@ -205,6 +216,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
                 type="checkbox"
                 checked={spotInfo.stairs}
                 onChange={handleTypeInputChange}
+                className={"align-middle mx-1"}
               />
             </label>
           </div>
@@ -216,6 +228,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="bustRating"
               value={1}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             2
             <input
@@ -223,6 +236,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="bustRating"
               value={2}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             3
             <input
@@ -230,6 +244,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="bustRating"
               value={3}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             4
             <input
@@ -237,6 +252,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="bustRating"
               value={4}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
             5
             <input
@@ -244,6 +260,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
               name="bustRating"
               value={5}
               onChange={handleInputChange}
+              className={"mx-1"}
             />{" "}
           </label>
         </form>
@@ -255,14 +272,17 @@ const SpotInput = ({ lat, lng, showInput }) => {
           style={{ display: "none" }}
           onChange={handleUploadChange}
         />
-        <label htmlFor="img" className="block cursor-pointer border-b-2 w-md">
+        <label
+          htmlFor="img"
+          className="block cursor-pointer border-2 w-1/2 mx-auto rounded-full py-1 px-3 hover:border-purple-900 "
+        >
           {" "}
           {uploadStatus ? uploadStatus.toFixed() + `%` : "Upload Image"}
         </label>
 
         <button
           disabled={uploadStatus && uploadStatus !== 100}
-          className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none mb-3"
+          className="text-white font-bold rounded-full py-3 px-6 bg-purple-500 hover:bg-purple-700 focus:outline-none my-3"
           type="button"
           onClick={() => submitNewSpot()}
         >
