@@ -19,7 +19,7 @@ const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
     });
 
   return (
-    <div className="shadow-lg rounded-lg bg-white flex flex-col absolute top-5 mx-20 w-3/4">
+    <div className="shadow-lg rounded-lg bg-white flex flex-col absolute top-5 mx-20 w-3/4 z-50">
       <div className="m-5 pl-5 pr-5">
         <h1 className="font-bold text-xl"> {detailedInfo.name}</h1>
         <div className="my-2">

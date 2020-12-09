@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App relative">
-      <h1 className="absolute top-5 z-50 font-bold text-sm ml-5 rounded-full py-3 px-6 bg-purple-700 text-white shadow-lg">
+      <h1 className="absolute top-5 z-40 font-bold text-sm ml-5 rounded-full py-3 px-6 bg-purple-700 text-white shadow-lg">
         Skate Spot Finder
       </h1>
 
