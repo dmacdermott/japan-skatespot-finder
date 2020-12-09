@@ -80,6 +80,7 @@ export default function Map({ filterResults, getDetailedInfo }) {
           data.length > 0 &&
           data.map(spot => (
             <Marker
+              key={spot.coords}
               position={{ lat: +spot.coords[0], lng: +spot.coords[1] }}
               onClick={() => getSpotInfo(spot)}
             />
@@ -95,7 +96,10 @@ export default function Map({ filterResults, getDetailedInfo }) {
                 {typeof spotInfo.type === "object" ? (
                   ((<h2 className="text-md">Type</h2>),
                   spotInfo.type.map(type => (
-                    <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
+                    <span
+                      key={type}
+                      className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5"
+                    >
                       {" "}
                       {type}{" "}
                     </span>

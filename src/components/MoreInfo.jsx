@@ -1,9 +1,8 @@
-import { React, useRef } from "react";
+import { React } from "react";
 import fire from "../fire";
 
 const storage = fire.storage();
 const storageRef = storage.ref();
-const spotsRef = storageRef.child("spot_images");
 
 const star = "⭐️";
 const police = "👮🏻‍♂️";
@@ -25,8 +24,11 @@ const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
         <div className="my-2">
           {typeof detailedInfo.type === "object"
             ? ((<h2 className="text-md">Type</h2>),
-              detailedInfo.type.map(type => (
-                <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
+              detailedInfo.type.map((type, i) => (
+                <span
+                  key={i}
+                  className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5"
+                >
                   {" "}
                   {type}{" "}
                 </span>
