@@ -43,7 +43,7 @@ export default function Map({ filterResults, getDetailedInfo }) {
           for (let spots in obj) {
             data.push(obj[spots]);
           }
-          console.log(filterResults);
+
           if (filterResults) {
             data = data.filter(
               spots => spots.type && spots.type.includes(filterResults)
@@ -65,7 +65,6 @@ export default function Map({ filterResults, getDetailedInfo }) {
   });
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
-  console.log("Loaded Data ", data);
   return (
     <div>
       <GoogleMap
@@ -73,7 +72,6 @@ export default function Map({ filterResults, getDetailedInfo }) {
         zoom={12}
         center={centerMap}
         options={options}
-        className={"Map"}
       >
         {data &&
           data.length > 0 &&
@@ -91,15 +89,20 @@ export default function Map({ filterResults, getDetailedInfo }) {
             <div className="m-3">
               <h3 className="text-lg font-bold">{spotInfo.name}</h3>
               <div className="my-2">
-                {typeof spotInfo.type === "object"
-                  ? ((<h2 className="text-md">Type</h2>),
-                    spotInfo.type.map(type => (
-                      <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
-                        {" "}
-                        {type}{" "}
-                      </span>
-                    )))
-                  : null}
+                {typeof spotInfo.type === "object" ? (
+                  ((<h2 className="text-md">Type</h2>),
+                  spotInfo.type.map(type => (
+                    <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
+                      {" "}
+                      {type}{" "}
+                    </span>
+                  )))
+                ) : spotInfo.type ? (
+                  <span className=" rounded-full py-0.5 px-2 border border-purple-900 border-opacity-100 mx-0.5">
+                    {" "}
+                    {spotInfo.type}{" "}
+                  </span>
+                ) : null}
               </div>
               <p className="my-2">
                 Rating:

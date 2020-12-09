@@ -30,7 +30,6 @@ const SpotInput = ({ lat, lng, showInput }) => {
       ...prevState,
       [name]: value,
     }));
-    console.log(spotInfo);
   };
 
   //handle checkbox input and push to spotInfo state
@@ -70,8 +69,7 @@ const SpotInput = ({ lat, lng, showInput }) => {
           ...prevState,
           img: file.name,
         }));
-      },
-      console.log(spotInfo)
+      }
     );
   };
 
