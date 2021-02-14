@@ -43,7 +43,14 @@ const MoreInfo = ({ detailedInfo, showMoreInfo }) => {
           Bust Rating:
           {police.repeat(detailedInfo.bustRating)}
         </p>
-        <img src="" alt="" id="image-el" className={"max-h-72 block mx-auto"} />
+        <div className="mx-auto w-52">
+          <img
+            src=""
+            alt=""
+            id="image-el"
+            className={"max-h-1/4 block mx-auto"}
+          />
+        </div>
       </div>
 
       <button
